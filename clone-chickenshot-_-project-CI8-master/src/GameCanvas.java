@@ -10,6 +10,7 @@ import game.enemy.roundshootenemy.CreateRoundShootEnemy;
 import game.enemy.meteor.CreateMeteor;
 import game.player.BagEnegyBullet;
 import game.player.EnegyBullet;
+import game.player.HitPointPlayer;
 import game.player.Player;
 import game.score.Score;
 
@@ -59,6 +60,7 @@ public class GameCanvas extends JPanel {
         GameObjectManager.instance.add(new BagEnegyBullet());
         GameObjectManager.instance.add(new EnegyBullet());
         GameObjectManager.instance.add(new Score());
+        GameObjectManager.instance.add(new HitPointPlayer());
     }
 
     private void setupBackBuffered() {

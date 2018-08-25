@@ -19,7 +19,7 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public BoxCollider boxCollider;
     public int angle;
     public int force;
-    private int hitPoints;
+    public int hitPoints;
 
     public Player() {
         this.hitPoints = 20;
