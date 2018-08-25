@@ -5,6 +5,7 @@ import base.GameObjectManager;
 import base.Vector2D;
 import game.player.BulletPlayer;
 import game.player.Player;
+import game.score.Score;
 import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
@@ -56,8 +57,10 @@ public class EnemyTravel extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if(this.hitPoints == 0)
+        if(this.hitPoints == 0){
+            GameObjectManager.instance.score+=30;
             this.isAlive = false;
+        }
     }
 
     @Override
@@ -65,7 +68,6 @@ public class EnemyTravel extends GameObject implements PhysicBody, HitPoints {
         if(gameObject instanceof Player)
             this.hitPoints=0;
         if(gameObject instanceof BulletPlayer){
-            //            this.hitPoints -= ((BulletPlayer) gameObject).force;
             Player player = GameObjectManager.instance.findPlayer();
             this.hitPoints-=player.force;
         }

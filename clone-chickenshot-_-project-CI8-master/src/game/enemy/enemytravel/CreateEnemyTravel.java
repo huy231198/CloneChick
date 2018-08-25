@@ -10,7 +10,7 @@ import java.util.Random;
 public class CreateEnemyTravel extends GameObject {
     private int i;
     private Random random = new Random();
-    private Vector2D tempPosition = new Vector2D().set(random.nextInt(2)*600,random.nextInt(100));
+    private Vector2D tempPosition = new Vector2D().set(random.nextInt(2)*1024,random.nextInt(100)+50);
     private Vector2D tempVelocity = new Vector2D();
 
     public CreateEnemyTravel() { this.configAction(); }
@@ -19,7 +19,7 @@ public class CreateEnemyTravel extends GameObject {
         Action createAction = new ActionAdapter() {
             @Override
             public boolean run(GameObject owner) {
-                if(tempPosition.x == 600){
+                if(tempPosition.x == 1024){
                     tempVelocity.set(-5f,2.5f);
                 }else{
                     tempVelocity.set(5f,2.5f);

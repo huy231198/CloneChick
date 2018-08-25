@@ -1,3 +1,4 @@
+import base.GameObject;
 import base.GameObjectManager;
 import game.background.Background;
 import game.enemy.boss.Boss;
@@ -7,7 +8,10 @@ import game.enemy.enemytravel.CreateEnemyTravel;
 import game.enemy.growupenemy.CreateEnemyGrowUp;
 import game.enemy.roundshootenemy.CreateRoundShootEnemy;
 import game.enemy.meteor.CreateMeteor;
+import game.player.BagEnegyBullet;
+import game.player.EnegyBullet;
 import game.player.Player;
+import game.score.Score;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,6 +56,9 @@ public class GameCanvas extends JPanel {
         GameObjectManager.instance.add(new CreateRoundShootEnemy());
         GameObjectManager.instance.add(new CreateMeteor());
         GameObjectManager.instance.add(new CreateEnemyBehind());
+        GameObjectManager.instance.add(new BagEnegyBullet());
+        GameObjectManager.instance.add(new EnegyBullet());
+        GameObjectManager.instance.add(new Score());
     }
 
     private void setupBackBuffered() {

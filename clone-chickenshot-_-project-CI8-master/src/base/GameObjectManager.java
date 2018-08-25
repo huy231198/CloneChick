@@ -13,6 +13,7 @@ public class GameObjectManager {
     static public GameObjectManager instance = new GameObjectManager();
     public List<GameObject> list;
     private List<GameObject> tempList;
+    public int score = 0;
 
     private GameObjectManager() {
         this.list = new ArrayList<>();

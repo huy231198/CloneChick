@@ -23,7 +23,7 @@ public class CreateEnemyGrowUp extends GameObject {
             @Override
             public boolean run(GameObject owner) {
                 EnemyGrowUp enemyGrowUp = GameObjectManager.instance.recycle(EnemyGrowUp.class);
-                enemyGrowUp.position.set(random.nextInt(1024), 0);
+                enemyGrowUp.position.set(random.nextInt(1024), 50);
                 enemyGrowUp.velocity.set(random.nextInt(3) + 1, random.nextInt(3) + 1);
                 enemyGrowUps.add(enemyGrowUp);
                 return true;

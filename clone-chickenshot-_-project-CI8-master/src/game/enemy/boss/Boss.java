@@ -57,7 +57,6 @@ public class Boss extends GameObject implements PhysicBody, HitPoints {
         if (gameObject instanceof Player)
             this.hitPoints = 0;
         if (gameObject instanceof BulletPlayer) {
-//            this.hitPoints -= ((BulletPlayer) gameObject).force;
             Player player = GameObjectManager.instance.findPlayer();
             this.hitPoints -= player.force;
         }

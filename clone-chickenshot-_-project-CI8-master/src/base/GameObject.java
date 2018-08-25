@@ -19,7 +19,7 @@ public class GameObject{
     public List<Action> actions;
 
     public GameObject() {
-        this.position = new Vector2D();
+        this.position = new Vector2D(0,50);
         this.attributes = new ArrayList<>();
         this.actions = new ArrayList<>();
         this.isAlive = true;

@@ -5,6 +5,7 @@ import base.GameObjectManager;
 import base.Vector2D;
 import game.player.BulletPlayer;
 import game.player.Player;
+import game.score.Score;
 import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
@@ -61,6 +62,7 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
         this.getHitPoint(gameObject);
         if(this.hitPoints == 0){
             this.angle = 0.0;
+            GameObjectManager.instance.score += 20;
             this.isAlive = false;
         }
     }
@@ -70,7 +72,6 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
         if(gameObject instanceof Player)
             this.hitPoints=0;
         if(gameObject instanceof BulletPlayer){
-//            this.hitPoints -= ((BulletPlayer) gameObject).force;
             Player player = GameObjectManager.instance.findPlayer();
             this.hitPoints-=player.force;
         }

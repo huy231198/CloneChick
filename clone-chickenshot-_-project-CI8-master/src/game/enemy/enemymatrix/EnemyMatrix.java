@@ -1,9 +1,11 @@
 package game.enemy.enemymatrix;
 
 import base.GameObject;
+import base.GameObjectManager;
 import base.Vector2D;
 import game.player.BulletPlayer;
 import game.player.Player;
+import game.score.Score;
 import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
@@ -54,8 +56,10 @@ public class EnemyMatrix extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         getHitPoint(gameObject);
-        if(this.hitPoints==0)
+        if(this.hitPoints==0){
+            GameObjectManager.instance.score += 10;
             this.isAlive = false;
+        }
     }
 
     @Override

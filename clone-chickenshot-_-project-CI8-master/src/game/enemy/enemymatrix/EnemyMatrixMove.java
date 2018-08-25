@@ -19,13 +19,13 @@ public class EnemyMatrixMove implements Attribute<EnemyMatrix> {
                 count = 0;
             }
         } else {
-            if (Math.abs(gameObject.position.x - gameObject.temp.x) >= 1000) {
+            if (Math.abs(gameObject.position.x - gameObject.temp.x) >= 925) {
                 gameObject.velocity.set(0, 2.5f);
                 gameObject.temp.set(gameObject.position);
                 count++;
             }
             if (gameObject.position.y - gameObject.temp.y >= 100) {
-                if (gameObject.position.x >= 500) {
+                if (gameObject.position.x >= 800) {
                     gameObject.velocity.set(-2.5f, 0);
                     gameObject.temp.set(gameObject.position);
                     count++;

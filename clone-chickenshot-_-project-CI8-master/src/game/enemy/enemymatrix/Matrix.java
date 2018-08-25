@@ -25,7 +25,7 @@ public class Matrix extends GameObject {
     public void createEnemies() {
         for(i=0;i<=15;i++) {
             EnemyMatrix enemyMatrix = GameObjectManager.instance.recycle(EnemyMatrix.class);
-            enemyMatrix.position.set((i%4)*25,(i/4)*25);
+            enemyMatrix.position.set((i%4)*25,(i/4)*25+50);
             enemyMatrix.velocity.set(2.5f, 0);
             enemyMatrix.temp.set(enemyMatrix.position);
             this.enemyMatrices.add(enemyMatrix);
