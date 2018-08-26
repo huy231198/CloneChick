@@ -2,6 +2,7 @@ package game.enemy.growupenemy;
 
 import base.Attribute;
 import base.FrameCounter;
+import renderer.ImageRenderer;
 
 import java.util.Random;
 
@@ -13,11 +14,20 @@ public class EnemyGrowUpGrow implements Attribute<EnemyGrowUp> {
     public void run(EnemyGrowUp enemyGrowUp) {
         if (this.frameCounter.checkCounter()) {
             if (enemyGrowUp.width <= 100 && enemyGrowUp.height <= 100) {
-                enemyGrowUp.width+=5;
-                enemyGrowUp.height+=5;
+                enemyGrowUp.width+=10;
+                enemyGrowUp.height+=10;
                 enemyGrowUp.boxCollider.set(enemyGrowUp.width,enemyGrowUp.height);
                 this.frameCounter.resetCount();
             }
+            else{
+                if(enemyGrowUp.width == 110 && enemyGrowUp.height == 110){
+                    enemyGrowUp.renderer=new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/chicken.png",enemyGrowUp.width,enemyGrowUp.height);
+                    enemyGrowUp.boxCollider.set(enemyGrowUp.width,enemyGrowUp.height);
+                    enemyGrowUp.width+=10;
+                    enemyGrowUp.height+=10;
+                }
+            }
+
         }
     }
 }

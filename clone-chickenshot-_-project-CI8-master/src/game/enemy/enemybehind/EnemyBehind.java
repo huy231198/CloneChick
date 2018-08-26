@@ -10,6 +10,7 @@ import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.ImageRenderer;
 import renderer.OvalRenderer;
 
 import java.awt.*;
@@ -30,8 +31,8 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
     public EnemyBehind() {
         this.hitPoints = 2;
         this.velocity = new Vector2D();
-        this.boxCollider = new BoxCollider(16,16);
-        this.renderer = new OvalRenderer(Color.YELLOW, 16, 16);
+        this.boxCollider = new BoxCollider(50,50);
+        this.renderer = new ImageRenderer( "clone-chickenshot-_-project-CI8-master/image/bird.png",50, 50);
         this.attributes.add(new EnemyBehindMove());
         this.runHitObject = new RunHitObject(Player.class);
     }
@@ -40,7 +41,7 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
     public void run() {
         super.run();
         this.position.addUp(velocity);
-        this.boxCollider.position.set(this.position.x - 8,this.position.y - 8);
+        this.boxCollider.position.set(this.position.x - 25,this.position.y - 25);
         this.runHitObject.run(this);
 
         if (this.position.x > 1024 || this.position.x < 0) {

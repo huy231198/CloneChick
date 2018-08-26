@@ -10,6 +10,7 @@ import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.ImageRenderer;
 import renderer.OvalRenderer;
 
 import java.awt.*;
@@ -24,8 +25,8 @@ public class EnemyMatrix extends GameObject implements PhysicBody, HitPoints {
     public EnemyMatrix() {
         this.hitPoints = 1;
         this.velocity = new Vector2D(2.5f, 0);
-        this.boxCollider = new BoxCollider(16, 16);
-        this.renderer = new OvalRenderer(Color.WHITE, 16, 16);
+        this.boxCollider = new BoxCollider(50, 50);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/bird 2.png", 50, 50);
         this.temp = new Vector2D(this.position.x, this.position.y);
         this.attributes.add(new EnemyMatrixShoot());
         this.attributes.add(new EnemyMatrixMove());
@@ -36,7 +37,7 @@ public class EnemyMatrix extends GameObject implements PhysicBody, HitPoints {
     public void run() {
         super.run();
         this.position.addUp(velocity);
-        this.boxCollider.position.set(this.position.x - 8, this.position.y - 8);
+        this.boxCollider.position.set(this.position.x - 25, this.position.y - 25);
         this.attributes.add(new EnemyMatrixMove());
         this.runHitObject.run(this);
 

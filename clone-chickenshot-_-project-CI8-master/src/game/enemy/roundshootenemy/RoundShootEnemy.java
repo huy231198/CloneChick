@@ -10,6 +10,7 @@ import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.ImageRenderer;
 import renderer.OvalRenderer;
 
 import java.awt.*;
@@ -24,16 +25,16 @@ public class RoundShootEnemy extends GameObject implements PhysicBody, HitPoints
     public RoundShootEnemy() {
         this.hitPoints = 5;
         this.velocity = new Vector2D();
-        this.renderer = new OvalRenderer(Color.WHITE, 16, 16);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/kraken (1).png", 100, 100);
         this.attributes.add(new RoundShootEnemyShoot());
-        this.boxCollider = new BoxCollider(16, 16);
+        this.boxCollider = new BoxCollider(100, 100);
         this.runHitObject = new RunHitObject(Player.class);
     }
 
     @Override
     public void run() {
         super.run();
-        this.boxCollider.position.set(this.position.x - 8, this.position.y - 8);
+        this.boxCollider.position.set(this.position.x - 50, this.position.y - 50);
         this.runHitObject.run(this);
 
         if (this.position.y > 600 || this.position.y < 0) this.isAlive = false;

@@ -10,6 +10,7 @@ import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.ImageRenderer;
 import renderer.OvalRenderer;
 
 import java.awt.*;
@@ -23,8 +24,8 @@ public class EnemyTravel extends GameObject implements PhysicBody, HitPoints {
     public EnemyTravel() {
         this.hitPoints = 3;
         this.velocity = new Vector2D(2.5f,2.5f);
-        this.boxCollider = new BoxCollider(16,16);
-        this.renderer = new OvalRenderer(Color.WHITE, 16, 16);
+        this.boxCollider = new BoxCollider(60,60);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/chickenegg.png", 60, 60);
         this.runHitObject = new RunHitObject(Player.class);
     }
 
@@ -32,7 +33,7 @@ public class EnemyTravel extends GameObject implements PhysicBody, HitPoints {
     public void run() {
         super.run();
         this.position.addUp(velocity);
-        this.boxCollider.position.set(this.position.x - 8,this.position.y - 8);
+        this.boxCollider.position.set(this.position.x - 30,this.position.y - 30);
         this.runHitObject.run(this);
 
         if (this.velocity.x == -5f) {

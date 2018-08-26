@@ -10,6 +10,7 @@ import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.ImageRenderer;
 import renderer.OvalRenderer;
 
 import java.awt.*;
@@ -31,9 +32,10 @@ public class EnemyGrowUp extends GameObject implements PhysicBody, HitPoints {
             this.hitPoints = 3;
             this.velocity = new Vector2D(random.nextInt(8),random.nextInt(8));
             this.boxCollider = new BoxCollider(10,10);
-            this.renderer = new OvalRenderer(Color.WHITE, this.width, this.height);
-            this.attributes.add(new EnemyGrowUpGrow());
+        this.boxCollider = new BoxCollider(10,10);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/easter (1).png", this.width, this.height);
             this.attributes.add(new EnemyGrowUpMove());
+            this.attributes.add(new EnemyGrowUpGrow());
             this.runHitObject = new RunHitObject(Player.class);
     }
 
@@ -41,9 +43,9 @@ public class EnemyGrowUp extends GameObject implements PhysicBody, HitPoints {
     public void run() {
         super.run();
         this.position.addUp(velocity);
-        ((OvalRenderer)this.renderer).width = this.width;
-        ((OvalRenderer)this.renderer).height = this.height;
-        this.boxCollider.position.set(this.position.x - 8,this.position.y - 8);
+        ((ImageRenderer)this.renderer).width =this.width;
+        ((ImageRenderer)this.renderer).height =this.height;
+        this.boxCollider.position.set(this.position.x - this.width/2,this.position.y - this.height/2);
         this.runHitObject.run(this);
     }
 
@@ -63,6 +65,7 @@ public class EnemyGrowUp extends GameObject implements PhysicBody, HitPoints {
         if(this.hitPoints == 0){
             this.width = 10;
             this.height = 10;
+            this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/easter (1).png", this.width, this.height);
             GameObjectManager.instance.score+=30;
             this.isAlive = false;
         }

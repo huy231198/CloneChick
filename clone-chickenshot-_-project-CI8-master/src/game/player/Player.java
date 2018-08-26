@@ -25,20 +25,20 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
         this.hitPoints = 20;
         this.force=1;
         this.velocity = new Vector2D();
-        this.boxCollider = new BoxCollider(16, 20);
-        this.renderer = new PolygonRenderer(Color.RED,
-                new Vector2D(8,0),
-                new Vector2D(0, 20),
-                new Vector2D(16, 20));
-   //     this.renderer=new ImageRenderer("image/NV 2.jpg",16,16);
+        this.boxCollider = new BoxCollider(50, 50);
+//        this.renderer = new PolygonRenderer(Color.RED,
+//                new Vector2D(8,0),
+//                new Vector2D(0, 20),
+//                new Vector2D(16, 20));
+        this.renderer=new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/spaceship.png",50,50);
         this.attributes.add(new PlayerShoot());
         this.attributes.add(new PlayerMove());
     }
     @Override
     public void run(){
         super.run();
-        ((PolygonRenderer) this.renderer).angle = this.angle;
-        this.boxCollider.position.set(this.position.x - 10, this.position.y -8);
+     //   ((PolygonRenderer) this.renderer).angle = this.angle;
+        this.boxCollider.position.set(this.position.x - 25, this.position.y -25);
     }
 
     @Override

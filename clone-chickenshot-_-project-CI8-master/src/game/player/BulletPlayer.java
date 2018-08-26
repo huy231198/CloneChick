@@ -14,6 +14,7 @@ import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.ImageRenderer;
 import renderer.OvalRenderer;
 
 import java.awt.*;
@@ -26,8 +27,8 @@ public class BulletPlayer extends GameObject implements PhysicBody, HitPoints {
     public BulletPlayer() {
         this.force = 1;
         this.velocity = new Vector2D();
-        this.renderer = new OvalRenderer(Color.RED,5,5);
-        this.boxCollider = new BoxCollider(5,5);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/bolt.png",30,50);
+        this.boxCollider = new BoxCollider(30,50);
         this.runHitObject = new RunHitObject(
                 EnemyMatrix.class,
                 EnemyTravel.class,
@@ -44,7 +45,7 @@ public class BulletPlayer extends GameObject implements PhysicBody, HitPoints {
     public void run() {
         super.run();
         this.position.addUp(this.velocity);
-        this.boxCollider.position.set(this.position.x - 2.5f,this.position.y - 2.5f);
+        this.boxCollider.position.set(this.position.x - 15,this.position.y - 25);
         this.runHitObject.run(this);
 
         if (this.position.x > 1024 || this.position.x < 0) this.isAlive = false;

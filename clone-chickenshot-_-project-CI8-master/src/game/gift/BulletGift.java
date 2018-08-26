@@ -8,6 +8,7 @@ import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.ImageRenderer;
 import renderer.OvalRenderer;
 
 import java.awt.*;
@@ -19,7 +20,7 @@ public class BulletGift extends GameObject  implements PhysicBody, HitPoints {
     private int hitPoints;
     public BulletGift(){
         this.velocity = new Vector2D();
-        this.renderer = new OvalRenderer(Color.RED, 25, 25);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/power.png", 25, 25);
         this.boxCollider = new BoxCollider(25, 25);
         this.runHitObject = new RunHitObject(Player.class);
         this. hitPoints=1;
