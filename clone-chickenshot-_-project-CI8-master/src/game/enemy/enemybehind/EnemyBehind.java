@@ -21,6 +21,7 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
+    private static final int hp = 2;
 
     public double angle = 0.0;
     // Up = 1, Down = 0
@@ -29,7 +30,7 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
     public int leftRight = 1;
 
     public EnemyBehind() {
-        this.hitPoints = 2;
+        this.hitPoints = hp;
         this.velocity = new Vector2D();
         this.boxCollider = new BoxCollider(50,50);
         this.renderer = new ImageRenderer( "clone-chickenshot-_-project-CI8-master/image/bird.png",50, 50);
@@ -61,8 +62,9 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if(this.hitPoints == 0){
+        if(this.hitPoints <= 0){
             this.angle = 0.0;
+            this.hitPoints=hp;
             GameObjectManager.instance.score += 20;
             this.isAlive = false;
         }

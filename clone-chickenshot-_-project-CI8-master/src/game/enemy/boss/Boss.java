@@ -9,6 +9,7 @@ import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.ImageRenderer;
 import renderer.OvalRenderer;
 
 import java.awt.*;
@@ -20,11 +21,12 @@ public class Boss extends GameObject implements PhysicBody, HitPoints {
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
+    private static final int hp = 1000;
 
     public Boss() {
-        this.hitPoints = 1000;
+        this.hitPoints = hp;
         this.velocity = new Vector2D();
-        this.renderer = new OvalRenderer(Color.WHITE, 200, 200);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/alien.png", 200, 200);
         this.boxCollider = new BoxCollider(200, 200);
         this.runHitObject = new RunHitObject(Player.class);
 
@@ -48,8 +50,11 @@ public class Boss extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if (this.hitPoints == 0)
+        if (this.hitPoints <= 0){
+            this.hitPoints=hp;
             this.isAlive = false;
+        }
+ ;
     }
 
     @Override

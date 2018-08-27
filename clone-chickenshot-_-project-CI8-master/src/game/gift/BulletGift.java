@@ -45,7 +45,7 @@ public class BulletGift extends GameObject  implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         getHitPoint(gameObject);
-        if(this.hitPoints == 0){
+        if(this.hitPoints <= 0){
             this.isAlive = false;
         }
 

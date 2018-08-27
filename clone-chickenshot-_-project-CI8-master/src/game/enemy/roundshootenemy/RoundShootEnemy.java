@@ -21,12 +21,13 @@ public class RoundShootEnemy extends GameObject implements PhysicBody, HitPoints
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
+    private static final int hp = 5;
 
     public RoundShootEnemy() {
-        this.hitPoints = 5;
+        this.hitPoints = hp;
         this.velocity = new Vector2D();
         this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/kraken (1).png", 100, 100);
-        this.attributes.add(new RoundShootEnemyShoot());
+      //  this.attributes.add(new RoundShootEnemyShoot());
         this.boxCollider = new BoxCollider(100, 100);
         this.runHitObject = new RunHitObject(Player.class);
     }
@@ -48,8 +49,9 @@ public class RoundShootEnemy extends GameObject implements PhysicBody, HitPoints
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if(this.hitPoints == 0){
+        if(this.hitPoints <= 0){
             GameObjectManager.instance.score+=50;
+            this.hitPoints=hp;
             this.isAlive = false;
         }
     }
@@ -62,5 +64,6 @@ public class RoundShootEnemy extends GameObject implements PhysicBody, HitPoints
             Player player = GameObjectManager.instance.findPlayer();
             this.hitPoints-=player.force;
         }
+        System.out.println(this.hitPoints);
     }
 }

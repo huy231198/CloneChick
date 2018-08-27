@@ -9,6 +9,7 @@ import game.gift.BulletGift;
 import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
+import physic.RunHitObject;
 import renderer.ImageRenderer;
 import renderer.PolygonRenderer;
 
@@ -20,9 +21,10 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public int angle;
     public int force;
     public int hitPoints;
+    public RunHitObject runHitObject;
 
     public Player() {
-        this.hitPoints = 20;
+        this.hitPoints = 30;
         this.force=1;
         this.velocity = new Vector2D();
         this.boxCollider = new BoxCollider(60, 50);
@@ -33,6 +35,7 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
         this.renderer=new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/spaceship.png",60,50);
         this.attributes.add(new PlayerShoot());
         this.attributes.add(new PlayerMove());
+        this.runHitObject = new RunHitObject(BulletGift.class);
     }
     @Override
     public void run(){
@@ -57,17 +60,17 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public void getHitPoint(GameObject gameObject) {
         if(gameObject instanceof EnemyMatrix){
             this.hitPoints-=3;
-            this.force--;
+            if( this.force>1) this.force--;
         }
         if(gameObject instanceof EnemyTravel){
             this.hitPoints-=3;
-            this.force--;
+            if( this.force>1)this.force--;
         }
-
         if(gameObject instanceof BulletEnemy){
             this.hitPoints--;
-            this.force--;
+            if( this.force>1) this.force--;
         }
+        System.out.println("hited");
 
 
     }

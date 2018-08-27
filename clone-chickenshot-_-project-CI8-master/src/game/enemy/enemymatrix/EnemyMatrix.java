@@ -21,9 +21,10 @@ public class EnemyMatrix extends GameObject implements PhysicBody, HitPoints {
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
+    private static final int hp = 1;
 
     public EnemyMatrix() {
-        this.hitPoints = 1;
+        this.hitPoints = hp;
         this.velocity = new Vector2D(2.5f, 0);
         this.boxCollider = new BoxCollider(50, 50);
         this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/bird 2.png", 50, 50);
@@ -57,8 +58,9 @@ public class EnemyMatrix extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         getHitPoint(gameObject);
-        if(this.hitPoints==0){
+        if(this.hitPoints<=0){
             GameObjectManager.instance.score += 10;
+            this.hitPoints=hp;
             this.isAlive = false;
         }
     }
@@ -67,9 +69,9 @@ public class EnemyMatrix extends GameObject implements PhysicBody, HitPoints {
     public void getHitPoint(GameObject gameObject) {
         if(gameObject instanceof Player)
             this.hitPoints=0;
-        if(gameObject instanceof BulletPlayer) {
-            this.hitPoints=0;
-//            this.hitPoints-=((BulletPlayer) gameObject).force;
+        if(gameObject instanceof BulletPlayer){
+            Player player = GameObjectManager.instance.findPlayer();
+            this.hitPoints-=player.force;
         }
 
 

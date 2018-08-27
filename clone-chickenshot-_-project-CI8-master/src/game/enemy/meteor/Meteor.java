@@ -21,9 +21,9 @@ public class Meteor extends GameObject implements PhysicBody, HitPoints {
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
-
+    private static final int hp = 8;
     public Meteor() {
-        this.hitPoints = 10;
+        this.hitPoints = hp;
         this.velocity = new Vector2D();
         this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/asteroid.png",70, 70);
         this.boxCollider = new BoxCollider(70, 70);
@@ -48,8 +48,9 @@ public class Meteor extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if(this.hitPoints == 0){
+        if(this.hitPoints <= 0){
             GameObjectManager.instance.score += 100;
+            this.hitPoints=hp;
             this.isAlive = false;
         }
     }
