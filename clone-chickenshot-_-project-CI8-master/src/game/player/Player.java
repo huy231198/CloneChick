@@ -24,7 +24,7 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public RunHitObject runHitObject;
 
     public Player() {
-        this.hitPoints = 30;
+        this.hitPoints = 300;
         this.force=1;
         this.velocity = new Vector2D();
         this.boxCollider = new BoxCollider(60, 50);

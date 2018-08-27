@@ -16,7 +16,7 @@ public class CreateMeteor extends GameObject {
         super.run();
         if (this.frameCounter.checkCounter()) {
             Meteor meteor = GameObjectManager.instance.recycle(Meteor.class);
-            meteor.position.set(random.nextInt(10), 0);
+            meteor.position.set(random.nextInt(1001), 0);
             meteor.velocity.set(0,random.nextInt(2) + 2);
             System.out.println(meteor.velocity.x + " , " + meteor.velocity.y);
             this.frameCounter.resetCount();
