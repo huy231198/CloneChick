@@ -1,6 +1,7 @@
 package game.gift;
 
 import base.GameObject;
+import base.GameObjectManager;
 import base.Vector2D;
 import game.player.BulletPlayer;
 import game.player.Player;
@@ -18,6 +19,7 @@ public class BulletGift extends GameObject  implements PhysicBody, HitPoints {
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
+    private Player player;
     public BulletGift(){
         this.velocity = new Vector2D();
         this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/power.png", 25, 25);
@@ -32,7 +34,6 @@ public class BulletGift extends GameObject  implements PhysicBody, HitPoints {
         this.position.addUp(this.velocity);
         this.boxCollider.position.set((float)(this.position.x - 12.5), (float)(this.position.y - 12.5));
         this.runHitObject.run(this);
-
         if (this.position.y > 600) this.isAlive = false;
     }
 
@@ -43,14 +44,21 @@ public class BulletGift extends GameObject  implements PhysicBody, HitPoints {
 
     @Override
     public void getHit(GameObject gameObject) {
-        if(this.hitPoints == 0)
+        getHitPoint(gameObject);
+        if(this.hitPoints == 0){
             this.isAlive = false;
+        }
+
     }
 
     @Override
     public void getHitPoint(GameObject gameObject) {
-        if(gameObject instanceof Player)
+        if(gameObject instanceof Player){
+            player= GameObjectManager.instance.findPlayer();
+            if(player.force<6)
+                player.force++;
             this.hitPoints=0;
+        }
     }
 
 

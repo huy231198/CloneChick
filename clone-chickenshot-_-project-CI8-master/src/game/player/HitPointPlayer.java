@@ -16,6 +16,6 @@ public class HitPointPlayer extends GameObject {
         super.run();
         Player player = GameObjectManager.instance.findPlayer();
         this.position.set(player.position.x-10,player.position.y + 25);
-        this.renderer = new RectRenderer(Color.PINK,player.hitPoints,3);
+        this.renderer = new RectRenderer(Color.RED,player.hitPoints,3);
     }
 }

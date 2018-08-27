@@ -25,12 +25,12 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
         this.hitPoints = 20;
         this.force=1;
         this.velocity = new Vector2D();
-        this.boxCollider = new BoxCollider(50, 50);
+        this.boxCollider = new BoxCollider(60, 50);
 //        this.renderer = new PolygonRenderer(Color.RED,
 //                new Vector2D(8,0),
 //                new Vector2D(0, 20),
 //                new Vector2D(16, 20));
-        this.renderer=new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/spaceship.png",50,50);
+        this.renderer=new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/spaceship.png",60,50);
         this.attributes.add(new PlayerShoot());
         this.attributes.add(new PlayerMove());
     }
@@ -38,7 +38,7 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public void run(){
         super.run();
      //   ((PolygonRenderer) this.renderer).angle = this.angle;
-        this.boxCollider.position.set(this.position.x - 25, this.position.y -25);
+        this.boxCollider.position.set(this.position.x - 30, this.position.y -25);
     }
 
     @Override
@@ -51,18 +51,24 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
         getHitPoint(gameObject);
         if(this.hitPoints <=0)
             this.isAlive = false;
-        if(gameObject instanceof BulletGift){
-            this.force ++;
-        }
     }
 
     @Override
     public void getHitPoint(GameObject gameObject) {
-        if(gameObject instanceof EnemyMatrix)
+        if(gameObject instanceof EnemyMatrix){
             this.hitPoints-=3;
-        if(gameObject instanceof EnemyTravel)
+            this.force--;
+        }
+        if(gameObject instanceof EnemyTravel){
             this.hitPoints-=3;
-        if(gameObject instanceof BulletEnemy)
+            this.force--;
+        }
+
+        if(gameObject instanceof BulletEnemy){
             this.hitPoints--;
+            this.force--;
+        }
+
+
     }
 }

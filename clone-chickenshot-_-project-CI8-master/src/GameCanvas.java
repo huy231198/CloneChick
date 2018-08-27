@@ -8,6 +8,7 @@ import game.enemy.enemytravel.CreateEnemyTravel;
 import game.enemy.growupenemy.CreateEnemyGrowUp;
 import game.enemy.roundshootenemy.CreateRoundShootEnemy;
 import game.enemy.meteor.CreateMeteor;
+import game.gift.CreateBulletGift;
 import game.player.BagEnegyBullet;
 import game.player.EnegyBullet;
 import game.player.HitPointPlayer;
@@ -51,16 +52,17 @@ public class GameCanvas extends JPanel {
     private void setupCharacter() {
         GameObjectManager.instance.add(new Background());
         setupPlayer();
-        GameObjectManager.instance.add(new CreateMatrix());
-        GameObjectManager.instance.add(new CreateEnemyTravel());
+   //     GameObjectManager.instance.add(new CreateMatrix());
+  //      GameObjectManager.instance.add(new CreateEnemyTravel());
         GameObjectManager.instance.add(new CreateEnemyGrowUp());
-        GameObjectManager.instance.add(new CreateRoundShootEnemy());
-        GameObjectManager.instance.add(new CreateMeteor());
-        GameObjectManager.instance.add(new CreateEnemyBehind());
+//        GameObjectManager.instance.add(new CreateRoundShootEnemy());
+//        GameObjectManager.instance.add(new CreateMeteor());
+//        GameObjectManager.instance.add(new CreateEnemyBehind());
         GameObjectManager.instance.add(new BagEnegyBullet());
         GameObjectManager.instance.add(new EnegyBullet());
         GameObjectManager.instance.add(new Score());
         GameObjectManager.instance.add(new HitPointPlayer());
+        GameObjectManager.instance.add(new CreateBulletGift());
     }
 
     private void setupBackBuffered() {

@@ -11,11 +11,12 @@ public class PlayerShoot implements Attribute<Player> {
 
     @Override
     public void run(Player gameObject) {
+    //
         if (KeyboardEvent.instance.isSpace && this.frameCounter.checkCounter() && this.enegy < 40) {
-            BulletPlayer bulletPlayer = new BulletPlayer();
+            BulletPlayer bulletPlayer = GameObjectManager.instance.recycle(BulletPlayer.class);
+            bulletPlayer.setImage();
             bulletPlayer.position.set(gameObject.position.x - 3, gameObject.position.y - 19);
             bulletPlayer.velocity.set(0, -4.5f);
-            GameObjectManager.instance.add(bulletPlayer);
             this.enegy++;
             this.frameCounter.resetCount();
         }

@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class EnemyMatrixShoot implements Attribute<EnemyMatrix> {
     private Random random = new Random();
-    private FrameCounter frameCounter = new FrameCounter(160 + random.nextInt(150));
+    private FrameCounter frameCounter = new FrameCounter(560 + random.nextInt(150));
 
     @Override
     public void run(EnemyMatrix enemyMatrix) {
