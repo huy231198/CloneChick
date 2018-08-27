@@ -11,6 +11,8 @@ import physic.PhysicBody;
 import physic.RunHitObject;
 import renderer.ImageRenderer;
 import renderer.OvalRenderer;
+import scene.SceneManager;
+import scene.VictoryScene;
 
 import java.awt.*;
 
@@ -21,7 +23,7 @@ public class Boss extends GameObject implements PhysicBody, HitPoints {
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
-    private static final int hp = 1000;
+    private static final int hp = 10;
 
     public Boss() {
         this.hitPoints = hp;
@@ -51,8 +53,7 @@ public class Boss extends GameObject implements PhysicBody, HitPoints {
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
         if (this.hitPoints <= 0){
-            this.hitPoints=hp;
-            this.isAlive = false;
+            SceneManager.instance.changeScene(new VictoryScene());
         }
  ;
     }

@@ -26,7 +26,7 @@ public class CreateMatrix extends GameObject{
         Action waitAction = new ActionAdapter() {
             @Override
             public boolean run(GameObject owner) {
-                matrices.removeIf(enemy -> !enemy.isAlive);
+                matrices.removeIf(matrix -> !matrix.isAlive);
                 return matrices.size()== 1;
             }
         };
@@ -37,7 +37,7 @@ public class CreateMatrix extends GameObject{
                         createAction,
                         new RepeatActionForever(
                                 new SequenceAction(
-                                        new WaitAction(400),
+                                        new WaitAction(200),
                                         createAction,
                                         waitAction
                                 )

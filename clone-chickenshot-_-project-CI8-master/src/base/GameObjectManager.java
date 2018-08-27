@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameObjectManager {
+public class    GameObjectManager {
 
     static public GameObjectManager instance = new GameObjectManager();
     public List<GameObject> list;
@@ -74,5 +74,10 @@ public class GameObjectManager {
                 return null;
             }
         }
+    }
+
+    public void clear() {
+        this.list.clear();
+        this.tempList.clear();
     }
 }

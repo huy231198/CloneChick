@@ -12,6 +12,8 @@ import physic.PhysicBody;
 import physic.RunHitObject;
 import renderer.ImageRenderer;
 import renderer.PolygonRenderer;
+import scene.GameOverScene;
+import scene.SceneManager;
 
 import java.awt.*;
 
@@ -24,7 +26,7 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public RunHitObject runHitObject;
 
     public Player() {
-        this.hitPoints = 300;
+        this.hitPoints = 3;
         this.force=1;
         this.velocity = new Vector2D();
         this.boxCollider = new BoxCollider(60, 50);
@@ -42,6 +44,7 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
         super.run();
      //   ((PolygonRenderer) this.renderer).angle = this.angle;
         this.boxCollider.position.set(this.position.x - 30, this.position.y -25);
+        this.runHitObject.run(this);
     }
 
     @Override
@@ -53,7 +56,7 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public void getHit(GameObject gameObject) {
         getHitPoint(gameObject);
         if(this.hitPoints <=0)
-            this.isAlive = false;
+            SceneManager.instance.changeScene(new GameOverScene());
     }
 
     @Override
