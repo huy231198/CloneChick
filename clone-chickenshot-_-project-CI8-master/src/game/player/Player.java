@@ -14,13 +14,16 @@ import renderer.ImageRenderer;
 import renderer.PolygonRenderer;
 import scene.GameOverScene;
 import scene.SceneManager;
+import utils.Utils;
 
+import javax.sound.sampled.Clip;
 import java.awt.*;
 
 public class Player extends GameObject implements PhysicBody, HitPoints {
     public Vector2D velocity;
     public BoxCollider boxCollider;
     public int angle;
+   // private Clip clip= Utils.loadAudio("clone-chickenshot-_-project-CI8-master/sound/hurt.wav");
     public int force;
     public int hitPoints;
     public RunHitObject runHitObject;
@@ -65,17 +68,21 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
         if (gameObject instanceof EnemyMatrix) {
             this.hitPoints -= 3;
             if (this.force > 1) this.force--;
+//            this.clip.loop(1);
+//            this.clip.start();
         }
         if (gameObject instanceof EnemyTravel) {
             this.hitPoints -= 3;
             if (this.force > 1) this.force--;
+//            this.clip.loop(1);
+//            this.clip.start();
         }
         if (gameObject instanceof BulletEnemy) {
             this.hitPoints--;
             if (this.force > 1) this.force--;
+//            this.clip.loop(1);
+//            this.clip.start();
         }
-        System.out.println("hited");
-
-
+  //      System.out.println("hited");
     }
 }

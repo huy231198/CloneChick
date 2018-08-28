@@ -11,7 +11,9 @@ import physic.PhysicBody;
 import physic.RunHitObject;
 import renderer.ImageRenderer;
 import renderer.OvalRenderer;
+import utils.Utils;
 
+import javax.sound.sampled.Clip;
 import java.awt.*;
 
 public class BulletGift extends GameObject implements PhysicBody, HitPoints {
@@ -20,6 +22,8 @@ public class BulletGift extends GameObject implements PhysicBody, HitPoints {
     private RunHitObject runHitObject;
     private int hitPoints;
     private Player player;
+    private Clip clip= Utils.loadAudio("clone-chickenshot-_-project-CI8-master/sound/levelup.wav");
+
 
     public BulletGift() {
         this.velocity = new Vector2D();
@@ -56,8 +60,12 @@ public class BulletGift extends GameObject implements PhysicBody, HitPoints {
     public void getHitPoint(GameObject gameObject) {
         if (gameObject instanceof Player) {
             player = GameObjectManager.instance.findPlayer();
-            if (player.force < 6)
+            if (player.force < 6){
                 player.force++;
+                this.clip.loop(1);
+                this.clip.start();
+            }
+
             this.hitPoints = 0;
         }
     }
