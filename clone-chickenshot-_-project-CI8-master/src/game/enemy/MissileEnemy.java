@@ -7,6 +7,7 @@ import game.player.Player;
 import physic.BoxCollider;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.ImageRenderer;
 import renderer.OvalRenderer;
 
 import java.awt.*;
@@ -19,8 +20,8 @@ public class MissileEnemy extends GameObject implements PhysicBody {
 
     public MissileEnemy() {
         this.velocity = new Vector2D();
-        this.boxCollider = new BoxCollider(10, 15);
-        this.renderer = new OvalRenderer(Color.WHITE, 10, 15);
+        this.boxCollider = new BoxCollider(15, 20);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/rocket.png", 15, 20);
         this.runHitObject = new RunHitObject(Player.class);
     }
 
@@ -28,7 +29,7 @@ public class MissileEnemy extends GameObject implements PhysicBody {
     public void run() {
         super.run();
         this.position.addUp(this.velocity);
-        this.boxCollider.position.set(this.position.x - 5f, this.position.y - 7.5f);
+        this.boxCollider.position.set(this.position.x - 7.5f, this.position.y - 10f);
 
         Player player = GameObjectManager.instance.findPlayer();
         this.update(player.position);
