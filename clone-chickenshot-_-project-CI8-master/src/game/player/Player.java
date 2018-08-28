@@ -23,12 +23,13 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public Vector2D velocity;
     public BoxCollider boxCollider;
     public int angle;
-   // private Clip clip= Utils.loadAudio("clone-chickenshot-_-project-CI8-master/sound/hurt.wav");
+    private Clip clip;
     public int force;
     public int hitPoints;
     public RunHitObject runHitObject;
 
     public Player() {
+        this.clip = Utils.loadAudio("clone-chickenshot-_-project-CI8-master/sound/hurt.wav");
         this.hitPoints = 3;
         this.force = 1;
         this.velocity = new Vector2D();
@@ -65,24 +66,25 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
 
     @Override
     public void getHitPoint(GameObject gameObject) {
+        boolean hited=false;
         if (gameObject instanceof EnemyMatrix) {
             this.hitPoints -= 3;
             if (this.force > 1) this.force--;
-//            this.clip.loop(1);
-//            this.clip.start();
+            hited=true;
         }
         if (gameObject instanceof EnemyTravel) {
             this.hitPoints -= 3;
             if (this.force > 1) this.force--;
-//            this.clip.loop(1);
-//            this.clip.start();
+            hited=true;
         }
         if (gameObject instanceof BulletEnemy) {
             this.hitPoints--;
             if (this.force > 1) this.force--;
-//            this.clip.loop(1);
-//            this.clip.start();
+           hited=true;
         }
-  //      System.out.println("hited");
+        if(hited){
+            this.clip.loop(1);
+            this.clip.start();
+        }
     }
 }

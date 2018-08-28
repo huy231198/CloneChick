@@ -13,7 +13,7 @@ public class EndGameScore extends GameObject {
     public EndGameScore() {
         this.score = String.valueOf(GameObjectManager.instance.score);
 
-        this.position.set(80, 350);
+        this.position.set(100, 350);
         this.renderer = new TextRenderer(
                 "Your final score is: " + this.score,
                 Color.WHITE,

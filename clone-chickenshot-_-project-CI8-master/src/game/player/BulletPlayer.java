@@ -31,7 +31,7 @@ public class BulletPlayer extends GameObject implements PhysicBody, HitPoints {
         this.velocity = new Vector2D();
         this.setImage();
         //  this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/bolt.png",30,50);
-        this.boxCollider = new BoxCollider(30, 50);
+        this.boxCollider = new BoxCollider(40, 40);
         this.runHitObject = new RunHitObject(
                 EnemyMatrix.class,
                 EnemyTravel.class,
@@ -47,23 +47,23 @@ public class BulletPlayer extends GameObject implements PhysicBody, HitPoints {
     public void setImage() {
         switch (GameObjectManager.instance.findPlayer().force) {
             case 1: {
-                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/bolt.png", 20, 40);
+                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/BulletLevel/cola.png", 40 ,40);
                 break;
             }
             case 2: {
-                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/kraken (2).png", 30, 30);
+                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/BulletLevel/hot-dog.png", 40, 40);
                 break;
             }
             case 3: {
-                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/easter-egg (1).png", 30, 30);
+                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/BulletLevel/pizza.png", 40, 40);
                 break;
             }
             case 4: {
-                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/spaceship.png", 40, 40);
+                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/BulletLevel/burger (1).png", 40, 40);
                 break;
             }
             case 5: {
-                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/asteroid.png", 50, 50);
+                this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/BulletLevel/pizza (1).png", 50, 50);
                 break;
             }
         }
@@ -87,7 +87,6 @@ public class BulletPlayer extends GameObject implements PhysicBody, HitPoints {
 
     @Override
     public void getHit(GameObject gameObject) {
-        //  this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/bolt.png",30,50);
         this.isAlive = false;
     }
 
