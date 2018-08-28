@@ -18,6 +18,9 @@ public class FrameCounter {
             return false;
         }
     }
+    public void setMax(int max) {
+        this.timeInterval = timeInterval;
+    }
 
     public void resetCount() {
         this.counter = 0;

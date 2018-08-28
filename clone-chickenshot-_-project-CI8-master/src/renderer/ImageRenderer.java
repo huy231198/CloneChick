@@ -8,7 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import utils.Utils;
+import utils.ImageUtils;
+
 
 public class ImageRenderer implements Renderer {
     private BufferedImage image;
@@ -16,17 +17,9 @@ public class ImageRenderer implements Renderer {
     public int height;
 
     public ImageRenderer(String path, int width, int height) {
-        this.image = this.loadImage(path);
+        this.image = ImageUtils.loadImage(path);
         this.width = width;
         this.height = height;
-    }
-
-    private BufferedImage loadImage(String path) {
-        try {
-            return ImageIO.read(new File(path));
-        } catch (IOException e) {
-            return null;
-        }
     }
 
     @Override

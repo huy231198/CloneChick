@@ -1,5 +1,6 @@
 package game.player;
 
+import base.FrameCounter;
 import base.GameObject;
 import base.Vector2D;
 import game.enemy.BulletEnemy;
@@ -10,8 +11,10 @@ import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
 import physic.RunHitObject;
+import renderer.AnimationRenderer;
 import renderer.ImageRenderer;
 import renderer.PolygonRenderer;
+import renderer.Renderer;
 import scene.GameOverScene;
 import scene.SceneManager;
 import utils.Utils;
@@ -27,8 +30,13 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public int force;
     public int hitPoints;
     public RunHitObject runHitObject;
+    private Renderer imageRenderer;
+    private Renderer animationRenderer;
+    private boolean isAnimation;
+    private FrameCounter frameCounter;
 
-    public Player() {
+    public Player(Renderer imageRenderer) {
+        this.imageRenderer = imageRenderer;
         this.clip = Utils.loadAudio("clone-chickenshot-_-project-CI8-master/sound/hurt.wav");
         this.hitPoints = 3;
         this.force = 1;
@@ -39,8 +47,18 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
 //                new Vector2D(0, 20),
 //                new Vector2D(16, 20));
         this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/spaceship.png", 60, 50);
+        this.animationRenderer = new AnimationRenderer(
+                5,
+                "image/spaceship.png",
+                "image/spaceship (2).png",
+                "image/spaceship.png",
+                "image/spaceship (2).png",
+                "image/spaceship.png"
+        );
         this.attributes.add(new PlayerShoot());
         this.attributes.add(new PlayerMove());
+        this.frameCounter = new FrameCounter(50);
+        this.renderer = this.imageRenderer;
         this.runHitObject = new RunHitObject(BulletGift.class);
     }
 
@@ -50,6 +68,13 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
         //   ((PolygonRenderer) this.renderer).angle = this.angle;
         this.boxCollider.position.set(this.position.x - 30, this.position.y - 25);
         this.runHitObject.run(this);
+        if (this.isAnimation) {
+            if (this.frameCounter.checkCounter()) {
+                this.isAnimation = false;
+                this.renderer = this.imageRenderer;
+                this.frameCounter.resetCount();
+            }
+        }
     }
 
     @Override
@@ -59,6 +84,8 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
 
     @Override
     public void getHit(GameObject gameObject) {
+        this.renderer = this.animationRenderer;
+        this.isAnimation = true;
         getHitPoint(gameObject);
         if (this.hitPoints <= 0)
             SceneManager.instance.changeScene(new GameOverScene());
