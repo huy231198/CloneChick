@@ -27,7 +27,7 @@ public class EnemyScene implements Scene {
     public void init() {
         GameObjectManager.instance.add(new Background());
 
-        setupPlayer();
+        this.setupPlayer();
 
         GameObjectManager.instance.add(new CreateMatrix());
         GameObjectManager.instance.add(new CreateEnemyTravel());

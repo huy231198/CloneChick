@@ -30,13 +30,12 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     public int force;
     public int hitPoints;
     public RunHitObject runHitObject;
-    private Renderer imageRenderer;
     private Renderer animationRenderer;
     private boolean isAnimation;
     private FrameCounter frameCounter;
 
-    public Player(Renderer imageRenderer) {
-        this.imageRenderer = imageRenderer;
+    public Player() {
+
         this.clip = Utils.loadAudio("clone-chickenshot-_-project-CI8-master/sound/hurt.wav");
         this.hitPoints = 3;
         this.force = 1;
@@ -58,7 +57,6 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
         this.attributes.add(new PlayerShoot());
         this.attributes.add(new PlayerMove());
         this.frameCounter = new FrameCounter(50);
-        this.renderer = this.imageRenderer;
         this.runHitObject = new RunHitObject(BulletGift.class);
     }
 
@@ -71,7 +69,6 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
         if (this.isAnimation) {
             if (this.frameCounter.checkCounter()) {
                 this.isAnimation = false;
-                this.renderer = this.imageRenderer;
                 this.frameCounter.resetCount();
             }
         }

@@ -11,6 +11,7 @@ import game.enemy.enemymatrix.EnemyMatrix;
 import game.enemy.enemytravel.EnemyTravel;
 import game.enemy.growupenemy.EnemyGrowUp;
 import game.enemy.roundshootenemy.RoundShootEnemy;
+import game.star.Star;
 import physic.BoxCollider;
 import physic.HitPoints;
 import physic.PhysicBody;
@@ -40,7 +41,8 @@ public class BulletPlayer extends GameObject implements PhysicBody, HitPoints {
                 Meteor.class,
                 EnemyBehind.class,
                 Boss.class,
-                MissileEnemy.class
+                MissileEnemy.class,
+                Star.class
         );
     }
 

@@ -1,4 +1,4 @@
-package game.Star;
+package game.star;
 
 import base.GameObject;
 import base.GameObjectManager;

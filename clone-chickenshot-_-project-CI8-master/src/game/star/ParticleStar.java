@@ -1,4 +1,4 @@
-package game.Star;
+package game.star;
 
 import base.FrameCounter;
 import base.GameObject;
@@ -20,7 +20,7 @@ public class ParticleStar extends GameObject {
                 "image/explosion (1).png"
         };
 
-        this.renderer = new ImageRenderer(this.urls[this.random.nextInt(this.urls.length)], 50, 50);
+        this.renderer = new ImageRenderer(this.urls[this.random.nextInt(this.urls.length)], 10, 10);
         this.velocity = new Vector2D();
         this.frameCounter = new FrameCounter(this.random.nextInt(40) + 30);
     }
