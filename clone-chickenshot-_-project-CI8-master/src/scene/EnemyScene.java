@@ -15,8 +15,13 @@ import game.player.EnegyBullet;
 import game.player.HitPointPlayer;
 import game.player.Player;
 import game.score.Score;
+import utils.Utils;
+
+import javax.sound.sampled.Clip;
 
 public class EnemyScene implements Scene {
+    private Clip clip;
+
 
     @Override
     public void init() {
@@ -38,6 +43,8 @@ public class EnemyScene implements Scene {
 
         GameObjectManager.instance.add(new HitPointPlayer());
         GameObjectManager.instance.add(new CreateBulletGift());
+        this.clip= Utils.loadAudio("clone-chickenshot-_-project-CI8-master/sound/bgmusic.wav");
+        this.clip.loop(-1);
     }
 
     private void setupPlayer() {

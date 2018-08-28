@@ -8,7 +8,7 @@ import java.awt.*;
 public class GameOverText extends GameObject {
 
     public GameOverText() {
-        this.position.set(240, 250);
+        this.position.set(60, 250);
         this.renderer = new TextRenderer(
                 "GAME OVER",
                 Color.WHITE,

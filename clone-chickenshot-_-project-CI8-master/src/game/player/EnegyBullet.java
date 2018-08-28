@@ -24,7 +24,7 @@ public class EnegyBullet extends GameObject {
             }
         } else {
             if (this.enegy > 0) {
-                this.enegy-=1.5;
+                this.enegy -= 1.5;
                 this.renderer = new RectRenderer(Color.GREEN, (int) enegy, 24);
             }
         }

@@ -11,7 +11,7 @@ import java.awt.*;
 public class EndGamePressSpaceText extends GameObject {
 
     public EndGamePressSpaceText() {
-        this.position.set(180, 480);
+        this.position.set(60, 480);
         this.renderer = new TextRenderer(
                 "Press space to return to the start menu",
                 Color.WHITE,

@@ -13,7 +13,8 @@ import java.util.List;
 /**
  * Se co hai loai Animtion:
  * - Animation chay mot lan. tuc la chi ve lien tiep cac buc anh mot lan duy nhat
- * - Animation chay vo han. tuc la sau khi ve het cac buc anh thi lap lai*/
+ * - Animation chay vo han. tuc la sau khi ve het cac buc anh thi lap lai
+ */
 public class AnimationRenderer implements Renderer {
 
     private List<BufferedImage> images;
@@ -39,7 +40,7 @@ public class AnimationRenderer implements Renderer {
         if (this.disable) return;
         BufferedImage bufferedImage = this.images.get(this.currentIndex);
         if (bufferedImage != null) {
-            graphics.drawImage(bufferedImage, (int)position.x - bufferedImage.getWidth() / 2, (int)position.y - bufferedImage.getHeight() / 2, null);
+            graphics.drawImage(bufferedImage, (int) position.x - bufferedImage.getWidth() / 2, (int) position.y - bufferedImage.getHeight() / 2, null);
         }
         if (this.currentIndex == this.images.size() - 1 && !this.isRepeat) {
             this.disable = true;

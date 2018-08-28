@@ -12,6 +12,7 @@ public class RunHitObject<V extends GameObject & PhysicBody> {
     public RunHitObject(Class<V>... classes) {
         this.classes = Arrays.asList(classes);
     }
+
     public <T extends GameObject & PhysicBody> void run(T gameObject) {
         this.classes
                 .stream()

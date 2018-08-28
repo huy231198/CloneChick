@@ -32,8 +32,8 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
     public EnemyBehind() {
         this.hitPoints = hp;
         this.velocity = new Vector2D();
-        this.boxCollider = new BoxCollider(50,50);
-        this.renderer = new ImageRenderer( "clone-chickenshot-_-project-CI8-master/image/bird.png",50, 50);
+        this.boxCollider = new BoxCollider(50, 50);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/bird.png", 50, 50);
         this.attributes.add(new EnemyBehindMove());
         this.runHitObject = new RunHitObject(Player.class);
     }
@@ -42,7 +42,7 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
     public void run() {
         super.run();
         this.position.addUp(velocity);
-        this.boxCollider.position.set(this.position.x - 25,this.position.y - 25);
+        this.boxCollider.position.set(this.position.x - 25, this.position.y - 25);
         this.runHitObject.run(this);
 
         if (this.position.x > 1024 || this.position.x < 0) {
@@ -52,7 +52,9 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
     }
 
     @Override
-    public void render(Graphics graphics) { super.render(graphics); }
+    public void render(Graphics graphics) {
+        super.render(graphics);
+    }
 
     @Override
     public BoxCollider getBoxCollider() {
@@ -62,9 +64,9 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if(this.hitPoints <= 0){
+        if (this.hitPoints <= 0) {
             this.angle = 0.0;
-            this.hitPoints=hp;
+            this.hitPoints = hp;
             GameObjectManager.instance.score += 20;
             this.isAlive = false;
         }
@@ -72,11 +74,11 @@ public class EnemyBehind extends GameObject implements PhysicBody, HitPoints {
 
     @Override
     public void getHitPoint(GameObject gameObject) {
-        if(gameObject instanceof Player)
-            this.hitPoints=0;
-        if(gameObject instanceof BulletPlayer){
+        if (gameObject instanceof Player)
+            this.hitPoints = 0;
+        if (gameObject instanceof BulletPlayer) {
             Player player = GameObjectManager.instance.findPlayer();
-            this.hitPoints-=player.force;
+            this.hitPoints -= player.force;
         }
     }
 }

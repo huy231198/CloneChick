@@ -17,8 +17,8 @@ public class CreateBulletGift extends GameObject {
         if (this.frameCounter.checkCounter()) {
             BulletGift bulletGift = GameObjectManager.instance.recycle(BulletGift.class);
             bulletGift.position.set(random.nextInt(1024), 0);
-            bulletGift.velocity.set(0,random.nextInt(2) + 2);
-          //  System.out.println(meteor.velocity.x + " , " + meteor.velocity.y);
+            bulletGift.velocity.set(0, random.nextInt(2) + 2);
+            //  System.out.println(meteor.velocity.x + " , " + meteor.velocity.y);
             this.frameCounter.resetCount();
         }
     }

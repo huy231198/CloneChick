@@ -17,22 +17,22 @@ public class EnemyBehindMove implements Attribute<EnemyBehind> {
             if (this.frameCounter1.checkCounter()) {
                 if (gameObject.velocity.x >= 0 && gameObject.velocity.y < 0) {
                     gameObject.velocity.set(gameObject.velocity.rotate(gameObject.angle));
-                }
-                else if (gameObject.angle > 10) {
-                    gameObject.velocity.set(5 ,0);
+                } else if (gameObject.angle > 10) {
+                    gameObject.velocity.set(5, 0);
                 }
                 this.frameCounter1.resetCount();
             }
         } else {
-            if (gameObject.position.y < 400 && gameObject.angle > -10 && gameObject.upDown == 1) gameObject.angle -= 0.3;
-            if (gameObject.position.y < 400 && gameObject.angle > -10 && gameObject.upDown == 0) gameObject.angle -= 0.4;
+            if (gameObject.position.y < 400 && gameObject.angle > -10 && gameObject.upDown == 1)
+                gameObject.angle -= 0.3;
+            if (gameObject.position.y < 400 && gameObject.angle > -10 && gameObject.upDown == 0)
+                gameObject.angle -= 0.4;
 
             if (this.frameCounter2.checkCounter()) {
                 if (gameObject.velocity.x <= 0 && gameObject.velocity.y < 0) {
                     gameObject.velocity.set(gameObject.velocity.rotate(gameObject.angle));
-                }
-                else if (gameObject.angle < -10) {
-                    gameObject.velocity.set(-5 ,0);
+                } else if (gameObject.angle < -10) {
+                    gameObject.velocity.set(-5, 0);
                 }
                 this.frameCounter2.resetCount();
             }

@@ -58,20 +58,20 @@ public class EnemyMatrix extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         getHitPoint(gameObject);
-        if(this.hitPoints<=0){
+        if (this.hitPoints <= 0) {
             GameObjectManager.instance.score += 10;
-            this.hitPoints=hp;
+            this.hitPoints = hp;
             this.isAlive = false;
         }
     }
 
     @Override
     public void getHitPoint(GameObject gameObject) {
-        if(gameObject instanceof Player)
-            this.hitPoints=0;
-        if(gameObject instanceof BulletPlayer){
+        if (gameObject instanceof Player)
+            this.hitPoints = 0;
+        if (gameObject instanceof BulletPlayer) {
             Player player = GameObjectManager.instance.findPlayer();
-            this.hitPoints-=player.force;
+            this.hitPoints -= player.force;
         }
 
 

@@ -20,8 +20,8 @@ public class BulletEnemy extends GameObject implements PhysicBody {
 
     public BulletEnemy() {
         this.velocity = new Vector2D();
-        this.boxCollider = new BoxCollider(20,20);
-        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/easter-egg.png",20,20);
+        this.boxCollider = new BoxCollider(20, 20);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/easter-egg.png", 20, 20);
         this.runHitObject = new RunHitObject(Player.class);
     }
 
@@ -29,7 +29,7 @@ public class BulletEnemy extends GameObject implements PhysicBody {
     public void run() {
         super.run();
         this.position.addUp(this.velocity);
-        this.boxCollider.position.set(this.position.x -10,this.position.y-10);
+        this.boxCollider.position.set(this.position.x - 10, this.position.y - 10);
         this.runHitObject.run(this);
 
         if (this.position.x > 1024 || this.position.x < 0) this.isAlive = false;

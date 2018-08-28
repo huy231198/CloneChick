@@ -9,7 +9,7 @@ public class CreateBoss extends GameObject {
     public void run() {
         super.run();
         Boss boss = GameObjectManager.instance.recycle(Boss.class);
-        boss.position.set(400 ,50);
+        boss.position.set(400, 50);
         boss.velocity.set(10, 0);
     }
 

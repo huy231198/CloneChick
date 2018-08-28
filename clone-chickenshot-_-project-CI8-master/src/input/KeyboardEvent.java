@@ -11,8 +11,9 @@ public class KeyboardEvent implements KeyListener {
     static public KeyboardEvent instance = new KeyboardEvent();
     public boolean isS = false;
 
-    private KeyboardEvent(){
+    private KeyboardEvent() {
     }
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -20,38 +21,38 @@ public class KeyboardEvent implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_A){
+        if (e.getKeyCode() == KeyEvent.VK_A) {
             isA = true;
         }
-        if (e.getKeyCode()==KeyEvent.VK_D){
+        if (e.getKeyCode() == KeyEvent.VK_D) {
             isD = true;
         }
-        if(e.getKeyCode()==KeyEvent.VK_W){
+        if (e.getKeyCode() == KeyEvent.VK_W) {
             isW = true;
         }
-        if(e.getKeyCode()==KeyEvent.VK_SPACE){
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             isSpace = true;
         }
-        if(e.getKeyCode()==KeyEvent.VK_S){
-            isS=true;
+        if (e.getKeyCode() == KeyEvent.VK_S) {
+            isS = true;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode()==KeyEvent.VK_W){
+        if (e.getKeyCode() == KeyEvent.VK_W) {
             isW = false;
         }
-        if(e.getKeyCode()==KeyEvent.VK_D){
+        if (e.getKeyCode() == KeyEvent.VK_D) {
             isD = false;
         }
-        if(e.getKeyCode()==KeyEvent.VK_A){
+        if (e.getKeyCode() == KeyEvent.VK_A) {
             isA = false;
         }
-        if(e.getKeyCode()==KeyEvent.VK_SPACE){
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             isSpace = false;
         }
-        if(e.getKeyCode()==KeyEvent.VK_S){
+        if (e.getKeyCode() == KeyEvent.VK_S) {
             isS = false;
         }
     }

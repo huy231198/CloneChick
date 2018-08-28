@@ -12,16 +12,16 @@ public class Score extends GameObject {
 
     public String stringScore;
 
-    public Score (){
-        this.position.set(15,40);
-        this.renderer = new TextRenderer("0",Color.YELLOW,"Arial",25);
+    public Score() {
+        this.position.set(15, 40);
+        this.renderer = new TextRenderer("0", Color.YELLOW, "Arial", 25);
     }
 
     @Override
-    public void run(){
+    public void run() {
         super.run();
         stringScore = String.valueOf(GameObjectManager.instance.score);
-        this.renderer = new TextRenderer(stringScore,Color.YELLOW,"Arial",25);
+        this.renderer = new TextRenderer(stringScore, Color.YELLOW, "Arial", 25);
 
         if (GameObjectManager.instance.score >= 100 && SceneManager.instance.isBossScene != 1) {
             SceneManager.instance.isBossScene = 1;

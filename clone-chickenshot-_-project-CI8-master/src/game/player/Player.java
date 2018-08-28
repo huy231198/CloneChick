@@ -27,23 +27,24 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
 
     public Player() {
         this.hitPoints = 3;
-        this.force=1;
+        this.force = 1;
         this.velocity = new Vector2D();
         this.boxCollider = new BoxCollider(60, 50);
 //        this.renderer = new PolygonRenderer(Color.RED,
 //                new Vector2D(8,0),
 //                new Vector2D(0, 20),
 //                new Vector2D(16, 20));
-        this.renderer=new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/spaceship.png",60,50);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/spaceship.png", 60, 50);
         this.attributes.add(new PlayerShoot());
         this.attributes.add(new PlayerMove());
         this.runHitObject = new RunHitObject(BulletGift.class);
     }
+
     @Override
-    public void run(){
+    public void run() {
         super.run();
-     //   ((PolygonRenderer) this.renderer).angle = this.angle;
-        this.boxCollider.position.set(this.position.x - 30, this.position.y -25);
+        //   ((PolygonRenderer) this.renderer).angle = this.angle;
+        this.boxCollider.position.set(this.position.x - 30, this.position.y - 25);
         this.runHitObject.run(this);
     }
 
@@ -55,23 +56,23 @@ public class Player extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         getHitPoint(gameObject);
-        if(this.hitPoints <=0)
+        if (this.hitPoints <= 0)
             SceneManager.instance.changeScene(new GameOverScene());
     }
 
     @Override
     public void getHitPoint(GameObject gameObject) {
-        if(gameObject instanceof EnemyMatrix){
-            this.hitPoints-=3;
-            if( this.force>1) this.force--;
+        if (gameObject instanceof EnemyMatrix) {
+            this.hitPoints -= 3;
+            if (this.force > 1) this.force--;
         }
-        if(gameObject instanceof EnemyTravel){
-            this.hitPoints-=3;
-            if( this.force>1)this.force--;
+        if (gameObject instanceof EnemyTravel) {
+            this.hitPoints -= 3;
+            if (this.force > 1) this.force--;
         }
-        if(gameObject instanceof BulletEnemy){
+        if (gameObject instanceof BulletEnemy) {
             this.hitPoints--;
-            if( this.force>1) this.force--;
+            if (this.force > 1) this.force--;
         }
         System.out.println("hited");
 

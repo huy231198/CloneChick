@@ -7,11 +7,13 @@ import base.GameObjectManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateMatrix extends GameObject{
+public class CreateMatrix extends GameObject {
 
     public List<Matrix> matrices = new ArrayList<>();
 
-    public CreateMatrix() { this.configAction(); }
+    public CreateMatrix() {
+        this.configAction();
+    }
 
     public void configAction() {
         Action createAction = new ActionAdapter() {
@@ -27,7 +29,7 @@ public class CreateMatrix extends GameObject{
             @Override
             public boolean run(GameObject owner) {
                 matrices.removeIf(matrix -> !matrix.isAlive);
-                return matrices.size()== 1;
+                return matrices.size() == 1;
             }
         };
 

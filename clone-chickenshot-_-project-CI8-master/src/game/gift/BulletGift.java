@@ -14,25 +14,26 @@ import renderer.OvalRenderer;
 
 import java.awt.*;
 
-public class BulletGift extends GameObject  implements PhysicBody, HitPoints {
+public class BulletGift extends GameObject implements PhysicBody, HitPoints {
     public Vector2D velocity;
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
     private Player player;
-    public BulletGift(){
+
+    public BulletGift() {
         this.velocity = new Vector2D();
         this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/power.png", 25, 25);
         this.boxCollider = new BoxCollider(25, 25);
         this.runHitObject = new RunHitObject(Player.class);
-        this. hitPoints=1;
+        this.hitPoints = 1;
     }
 
     @Override
     public void run() {
         super.run();
         this.position.addUp(this.velocity);
-        this.boxCollider.position.set((float)(this.position.x - 12.5), (float)(this.position.y - 12.5));
+        this.boxCollider.position.set((float) (this.position.x - 12.5), (float) (this.position.y - 12.5));
         this.runHitObject.run(this);
         if (this.position.y > 600) this.isAlive = false;
     }
@@ -45,7 +46,7 @@ public class BulletGift extends GameObject  implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         getHitPoint(gameObject);
-        if(this.hitPoints <= 0){
+        if (this.hitPoints <= 0) {
             this.isAlive = false;
         }
 
@@ -53,11 +54,11 @@ public class BulletGift extends GameObject  implements PhysicBody, HitPoints {
 
     @Override
     public void getHitPoint(GameObject gameObject) {
-        if(gameObject instanceof Player){
-            player= GameObjectManager.instance.findPlayer();
-            if(player.force<6)
+        if (gameObject instanceof Player) {
+            player = GameObjectManager.instance.findPlayer();
+            if (player.force < 6)
                 player.force++;
-            this.hitPoints=0;
+            this.hitPoints = 0;
         }
     }
 

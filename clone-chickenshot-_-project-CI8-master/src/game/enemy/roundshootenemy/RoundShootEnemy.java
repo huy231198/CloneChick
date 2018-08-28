@@ -12,18 +12,20 @@ import physic.PhysicBody;
 import physic.RunHitObject;
 import renderer.ImageRenderer;
 import renderer.OvalRenderer;
+import utils.Utils;
 
+import javax.sound.sampled.Clip;
 import java.awt.*;
 
 public class RoundShootEnemy extends GameObject implements PhysicBody, HitPoints {
     public Vector2D velocity;
-
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
     private static final int hp = 5;
 
     public RoundShootEnemy() {
+
         this.hitPoints = hp;
         this.velocity = new Vector2D();
         this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/kraken (1).png", 100, 100);
@@ -48,20 +50,20 @@ public class RoundShootEnemy extends GameObject implements PhysicBody, HitPoints
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if(this.hitPoints <= 0){
-            GameObjectManager.instance.score+=50;
-            this.hitPoints=hp;
+        if (this.hitPoints <= 0) {
+            GameObjectManager.instance.score += 50;
+            this.hitPoints = hp;
             this.isAlive = false;
         }
     }
 
     @Override
     public void getHitPoint(GameObject gameObject) {
-        if(gameObject instanceof Player)
-            this.hitPoints=0;
-        if(gameObject instanceof BulletPlayer){
+        if (gameObject instanceof Player)
+            this.hitPoints = 0;
+        if (gameObject instanceof BulletPlayer) {
             Player player = GameObjectManager.instance.findPlayer();
-            this.hitPoints-=player.force;
+            this.hitPoints -= player.force;
         }
         System.out.println(this.hitPoints);
     }

@@ -9,7 +9,7 @@ public class GroupAction implements Action {
 
     private List<Action> actions;
 
-    public  GroupAction(Action... actions) {
+    public GroupAction(Action... actions) {
         this.actions = Arrays.asList(actions);
     }
 

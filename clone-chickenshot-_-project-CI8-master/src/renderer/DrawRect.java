@@ -1,6 +1,7 @@
 package renderer;
 
 import base.Vector2D;
+
 import java.awt.*;
 
 public class DrawRect implements Renderer {
@@ -17,6 +18,6 @@ public class DrawRect implements Renderer {
     @Override
     public void render(Graphics graphics, Vector2D position) {
         graphics.setColor(this.color);
-        graphics.drawRect((int)position.x,(int) position.y, this.width, this.height);
+        graphics.drawRect((int) position.x, (int) position.y, this.width, this.height);
     }
 }

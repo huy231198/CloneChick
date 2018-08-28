@@ -10,7 +10,8 @@ public class SceneManager {
     // set to 1 at boss scene
     public int isBossScene = 0;
 
-    private SceneManager() {}
+    private SceneManager() {
+    }
 
     public void changeScene(Scene scene) {
         this.nextScene = scene;

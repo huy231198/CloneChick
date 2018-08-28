@@ -19,8 +19,8 @@ public class MissileEnemy extends GameObject implements PhysicBody {
 
     public MissileEnemy() {
         this.velocity = new Vector2D();
-        this.boxCollider = new BoxCollider(10,15);
-        this.renderer = new OvalRenderer(Color.WHITE,10,15);
+        this.boxCollider = new BoxCollider(10, 15);
+        this.renderer = new OvalRenderer(Color.WHITE, 10, 15);
         this.runHitObject = new RunHitObject(Player.class);
     }
 
@@ -28,7 +28,7 @@ public class MissileEnemy extends GameObject implements PhysicBody {
     public void run() {
         super.run();
         this.position.addUp(this.velocity);
-        this.boxCollider.position.set(this.position.x-5f, this.position.y-7.5f);
+        this.boxCollider.position.set(this.position.x - 5f, this.position.y - 7.5f);
 
         Player player = GameObjectManager.instance.findPlayer();
         this.update(player.position);

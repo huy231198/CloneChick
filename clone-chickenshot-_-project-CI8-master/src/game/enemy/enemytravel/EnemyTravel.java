@@ -23,8 +23,8 @@ public class EnemyTravel extends GameObject implements PhysicBody, HitPoints {
 
     public EnemyTravel() {
         this.hitPoints = 3;
-        this.velocity = new Vector2D(2.5f,2.5f);
-        this.boxCollider = new BoxCollider(60,60);
+        this.velocity = new Vector2D(2.5f, 2.5f);
+        this.boxCollider = new BoxCollider(60, 60);
         this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/chickenegg.png", 60, 60);
         this.runHitObject = new RunHitObject(Player.class);
     }
@@ -33,12 +33,12 @@ public class EnemyTravel extends GameObject implements PhysicBody, HitPoints {
     public void run() {
         super.run();
         this.position.addUp(velocity);
-        this.boxCollider.position.set(this.position.x - 30,this.position.y - 30);
+        this.boxCollider.position.set(this.position.x - 30, this.position.y - 30);
         this.runHitObject.run(this);
 
         if (this.velocity.x == -5f) {
             if (this.position.x < 0) this.isAlive = false;
-        } else{
+        } else {
             if (this.position.x > 1024) this.isAlive = false;
         }
 
@@ -58,19 +58,19 @@ public class EnemyTravel extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if(this.hitPoints == 0){
-            GameObjectManager.instance.score+=30;
+        if (this.hitPoints == 0) {
+            GameObjectManager.instance.score += 30;
             this.isAlive = false;
         }
     }
 
     @Override
     public void getHitPoint(GameObject gameObject) {
-        if(gameObject instanceof Player)
-            this.hitPoints=0;
-        if(gameObject instanceof BulletPlayer){
+        if (gameObject instanceof Player)
+            this.hitPoints = 0;
+        if (gameObject instanceof BulletPlayer) {
             Player player = GameObjectManager.instance.findPlayer();
-            this.hitPoints-=player.force;
+            this.hitPoints -= player.force;
         }
     }
 }

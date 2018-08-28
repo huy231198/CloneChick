@@ -22,10 +22,11 @@ public class Meteor extends GameObject implements PhysicBody, HitPoints {
     private RunHitObject runHitObject;
     private int hitPoints;
     private static final int hp = 8;
+
     public Meteor() {
         this.hitPoints = hp;
         this.velocity = new Vector2D();
-        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/asteroid.png",70, 70);
+        this.renderer = new ImageRenderer("clone-chickenshot-_-project-CI8-master/image/asteroid.png", 70, 70);
         this.boxCollider = new BoxCollider(70, 70);
         this.runHitObject = new RunHitObject(Player.class);
     }
@@ -34,7 +35,7 @@ public class Meteor extends GameObject implements PhysicBody, HitPoints {
     public void run() {
         super.run();
         this.position.addUp(this.velocity);
-        this.boxCollider.position.set((float)(this.position.x - 35), (float)(this.position.y - 35));
+        this.boxCollider.position.set((float) (this.position.x - 35), (float) (this.position.y - 35));
         this.runHitObject.run(this);
 
         if (this.position.y > 600) this.isAlive = false;
@@ -48,20 +49,20 @@ public class Meteor extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if(this.hitPoints <= 0){
+        if (this.hitPoints <= 0) {
             GameObjectManager.instance.score += 100;
-            this.hitPoints=hp;
+            this.hitPoints = hp;
             this.isAlive = false;
         }
     }
 
     @Override
     public void getHitPoint(GameObject gameObject) {
-        if(gameObject instanceof Player)
-            this.hitPoints=0;
-        if(gameObject instanceof BulletPlayer){
+        if (gameObject instanceof Player)
+            this.hitPoints = 0;
+        if (gameObject instanceof BulletPlayer) {
             Player player = GameObjectManager.instance.findPlayer();
-            this.hitPoints-=player.force;
+            this.hitPoints -= player.force;
         }
     }
 }

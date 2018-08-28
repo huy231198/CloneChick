@@ -8,12 +8,12 @@ import java.awt.*;
 public class VictoryText extends GameObject {
 
     public VictoryText() {
-        this.position.set(90, 250);
+        this.position.set(10, 250);
         this.renderer = new TextRenderer(
-                "WINNER WINNER CHICKEN DINNER!",
+                "CHICKEN DINNER!",
                 Color.WHITE,
                 "Agency FB",
-                80
+                150
         );
     }
 }

@@ -14,12 +14,12 @@ import renderer.OvalRenderer;
 import scene.SceneManager;
 import scene.VictoryScene;
 
+import javax.sound.sampled.Clip;
 import java.awt.*;
 
 public class Boss extends GameObject implements PhysicBody, HitPoints {
 
     public Vector2D velocity;
-
     public BoxCollider boxCollider;
     private RunHitObject runHitObject;
     private int hitPoints;
@@ -52,10 +52,9 @@ public class Boss extends GameObject implements PhysicBody, HitPoints {
     @Override
     public void getHit(GameObject gameObject) {
         this.getHitPoint(gameObject);
-        if (this.hitPoints <= 0){
+        if (this.hitPoints <= 0) {
             SceneManager.instance.changeScene(new VictoryScene());
         }
- ;
     }
 
     @Override

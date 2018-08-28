@@ -19,7 +19,7 @@ public class CreateRoundShootEnemy extends GameObject {
             public boolean run(GameObject owner) {
                 RoundShootEnemy roundShootEnemy = GameObjectManager.instance.recycle(RoundShootEnemy.class);
                 roundShootEnemy.position.set(random.nextInt(1024), random.nextInt(300));
-                roundShootEnemy.velocity.set(random.nextInt(2)+1, 0);
+                roundShootEnemy.velocity.set(random.nextInt(2) + 1, 0);
                 return true;
             }
         };

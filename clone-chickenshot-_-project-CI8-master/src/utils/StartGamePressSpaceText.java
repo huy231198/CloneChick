@@ -11,7 +11,7 @@ import java.awt.*;
 public class StartGamePressSpaceText extends GameObject {
 
     public StartGamePressSpaceText() {
-        this.position.set(220, 440);
+        this.position.set(100, 350);
         this.renderer = new TextRenderer(
                 "Press space to start the game!",
                 Color.WHITE,

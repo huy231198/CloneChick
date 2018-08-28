@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameObject{
+public class GameObject {
 
     public boolean isAlive;
 
@@ -19,7 +19,7 @@ public class GameObject{
     public List<Action> actions;
 
     public GameObject() {
-        this.position = new Vector2D(0,50);
+        this.position = new Vector2D(0, 50);
         this.attributes = new ArrayList<>();
         this.actions = new ArrayList<>();
         this.isAlive = true;
